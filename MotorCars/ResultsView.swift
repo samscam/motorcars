@@ -23,12 +23,17 @@ struct ResultsView: View {
                 Text(searchParameters.model).bold()
                 Text(searchParameters.year)
             }
-            if viewModel.isSearching{
+            if viewModel.isSearching {
                 Group{
                     Text("Searching!")
                 }
             }
             
+            if viewModel.vehicles != nil {
+                ForEach(viewModel.vehicles ?? []){ vehicle in
+                    Text(vehicle.name)
+                }
+            }
             
         }
         .onAppear(){

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Vehicle: Codable{
+struct Vehicle: Decodable, Identifiable{
     var id: String
     var name: String
     var title: String
@@ -15,4 +15,8 @@ struct Vehicle: Codable{
     var model: String
     var year: String
     var price: String
+}
+
+struct VehicleResponse: Decodable{
+    let searchResults: [Vehicle]
 }

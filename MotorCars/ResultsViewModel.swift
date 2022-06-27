@@ -16,7 +16,7 @@ extension ResultsView{
         
         @Published var isSearching: Bool = true
         @Published var errorDescription: String?
-        @Published var results: [Vehicle]?
+        @Published var vehicles: [Vehicle]?
         
         init(_ searchParameters: SearchParameters){
             self.searchParameters = searchParameters
@@ -24,10 +24,16 @@ extension ResultsView{
         
         func executeSearch() {
             isSearching = true
-            AF.request(baseURL, method: .get, parameters: searchParameters).response{[weak self] response in
+            AF.request(baseURL, method: .get, parameters: searchParameters).responseDecodable(of: VehicleResponse.self){ [weak self] response in
                 
                 self?.isSearching=false
                 debugPrint(response)
+                switch response.result {
+                case .failure(let error):
+                    self?.errorDescription = error.localizedDescription
+                case .success(let vehicleResponse):
+                    self?.vehicles = vehicleResponse.searchResults
+                }
                 
             }
         }
