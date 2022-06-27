@@ -15,6 +15,7 @@
 		22C06FDC28646B29006E5392 /* MotorCarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FDB28646B29006E5392 /* MotorCarsUITests.swift */; };
 		22C06FDE28646B29006E5392 /* MotorCarsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FDD28646B29006E5392 /* MotorCarsUITestsLaunchTests.swift */; };
 		22C06FEC2869AD2B006E5392 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C06FEB2869AD2B006E5392 /* Alamofire */; };
+		22C06FEE2869C607006E5392 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FED2869C607006E5392 /* ResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		22C06FD728646B29006E5392 /* MotorCarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MotorCarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C06FDB28646B29006E5392 /* MotorCarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorCarsUITests.swift; sourceTree = "<group>"; };
 		22C06FDD28646B29006E5392 /* MotorCarsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotorCarsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22C06FED2869C607006E5392 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				22C06FC028646B28006E5392 /* MotorCarsApp.swift */,
 				22C06FC228646B28006E5392 /* SearchView.swift */,
+				22C06FED2869C607006E5392 /* ResultsView.swift */,
 				22C06FC428646B29006E5392 /* Assets.xcassets */,
 				22C06FC628646B29006E5392 /* Preview Content */,
 			);
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C06FC328646B28006E5392 /* SearchView.swift in Sources */,
+				22C06FEE2869C607006E5392 /* ResultsView.swift in Sources */,
 				22C06FC128646B28006E5392 /* MotorCarsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MotorCars/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Y2D8C5PMT;
+				DEVELOPMENT_TEAM = 9M28MQ9SZC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -454,7 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MotorCars/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Y2D8C5PMT;
+				DEVELOPMENT_TEAM = 9M28MQ9SZC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

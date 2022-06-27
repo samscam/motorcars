@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct SearchView: View {
+    
+    @State private var isShowingResultsView: Bool = false
+    
     @State private var make: String = ""
     @State private var model: String = ""
     @State private var year: String = ""
     
     var body: some View {
         NavigationView{
+
             ScrollView{
+
                 VStack{
                     TextField("Make", text: $make)
                         .disableAutocorrection(true)
@@ -27,11 +32,12 @@ struct SearchView: View {
                     TextField("Year", text: $year)
                         .padding()
                         .border(.primary)
-                    Button("Search") {
-                        // Do something
-                    }.buttonStyle(.borderedProminent)
+                    NavigationLink(destination: ResultsView()) { Text("Search")
+                    }
+                        .buttonStyle(.borderedProminent)
                 }
-            }.padding()
+            }
+                .padding()
                 .navigationTitle("Find a car...")
         }
 
