@@ -11,28 +11,34 @@ import Alamofire
 extension ResultsView{
     @MainActor class ViewModel: ObservableObject{
         
+        enum ResultsViewState {
+            case searching
+            case error(Error)
+            case success([Vehicle])
+        }
+        
         private let searchParameters: SearchParameters
         private let baseURL = "https://mcuapi.mocklab.io/search"
         
-        @Published var isSearching: Bool = true
-        @Published var errorDescription: String?
-        @Published var vehicles: [Vehicle]?
+        @Published var state: ResultsViewState = .searching
         
         init(_ searchParameters: SearchParameters){
             self.searchParameters = searchParameters
         }
         
         func executeSearch() {
-            isSearching = true
+            state = .searching
+            
             AF.request(baseURL, method: .get, parameters: searchParameters).responseDecodable(of: VehicleResponse.self){ [weak self] response in
                 
-                self?.isSearching=false
+                // Logging out these responses
                 debugPrint(response)
+                
                 switch response.result {
                 case .failure(let error):
-                    self?.errorDescription = error.localizedDescription
+                    self?.state = .error(error)
                 case .success(let vehicleResponse):
-                    self?.vehicles = vehicleResponse.searchResults
+                    self?.state = .success(vehicleResponse.searchResults)
                 }
                 
             }

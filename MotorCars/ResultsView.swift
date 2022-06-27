@@ -15,6 +15,7 @@ struct ResultsView: View {
         self.searchParameters = searchParameters
         self.viewModel = ViewModel(searchParameters)
     }
+    
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 12){
@@ -24,25 +25,21 @@ struct ResultsView: View {
                     Text(searchParameters.model).bold()
                     Text(searchParameters.year)
                 }
-                if viewModel.isSearching {
+                switch viewModel.state {
+                case .searching:
                     ProgressView("Searching")
-                }
-                
-                if let error = viewModel.errorDescription {
-                    VStack{
-                    Text("ERROR!").font(.title)
-                    Text(error)
-                    }.padding().background(.red)
-                }
-                
-                if let vehicles = viewModel.vehicles {
-                    
+                case .success(let vehicles):
                     // I've done this as a straight ForEach - which would be non-ideal if we have many results here.
                     // ... but also we would want paging and all sorts of other stuff going on if there were to be many many results...
                     
                     ForEach(vehicles){ vehicle in
                         VehicleCellView(vehicle: vehicle)
                     }
+                case .error(let error):
+                    VStack{
+                    Text("ERROR!").font(.title)
+                        Text(error.localizedDescription)
+                    }.padding().background(.red)
                 }
             }.padding()
         }
