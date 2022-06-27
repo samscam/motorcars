@@ -31,7 +31,7 @@ struct ResultsView: View {
             
             if viewModel.vehicles != nil {
                 ForEach(viewModel.vehicles ?? []){ vehicle in
-                    Text(vehicle.name)
+                    VehicleCellView(vehicle: vehicle)
                 }
             }
             
