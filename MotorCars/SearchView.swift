@@ -15,6 +15,10 @@ struct SearchView: View {
     @State private var model: String = ""
     @State private var year: String = ""
     
+    var searchParameters: SearchParameters{
+        return SearchParameters(make: make, model: model, year: year)
+    }
+    
     var body: some View {
         NavigationView{
 
@@ -32,7 +36,7 @@ struct SearchView: View {
                     TextField("Year", text: $year)
                         .padding()
                         .border(.primary)
-                    NavigationLink(destination: ResultsView()) { Text("Search")
+                    NavigationLink(destination: ResultsView(searchParameters)) { Text("Search")
                     }
                         .buttonStyle(.borderedProminent)
                 }
