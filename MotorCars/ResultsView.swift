@@ -28,6 +28,13 @@ struct ResultsView: View {
                     ProgressView("Searching")
                 }
                 
+                if let error = viewModel.errorDescription {
+                    VStack{
+                    Text("ERROR!").font(.title)
+                    Text(error)
+                    }.padding().background(.red)
+                }
+                
                 if let vehicles = viewModel.vehicles {
                     
                     // I've done this as a straight ForEach - which would be non-ideal if we have many results here.
