@@ -16,26 +16,28 @@ struct ResultsView: View {
         self.viewModel = ViewModel(searchParameters)
     }
     var body: some View {
-        VStack(alignment: .leading){
-            HStack{
-                Text("Searching for: ")
-                Text(searchParameters.make).bold()
-                Text(searchParameters.model).bold()
-                Text(searchParameters.year)
-            }
-            if viewModel.isSearching {
-                Group{
-                    Text("Searching!")
+        ScrollView{
+            VStack(alignment: .leading, spacing: 12){
+                HStack{
+                    Text("Searching for: ")
+                    Text(searchParameters.make).bold()
+                    Text(searchParameters.model).bold()
+                    Text(searchParameters.year)
+                }
+                if viewModel.isSearching {
+                    Group{
+                        Text("Searching!")
+                    }
+                }
+                
+                if viewModel.vehicles != nil {
+                    ForEach(viewModel.vehicles ?? []){ vehicle in
+                        VehicleCellView(vehicle: vehicle)
+                    }
                 }
             }
-            
-            if viewModel.vehicles != nil {
-                ForEach(viewModel.vehicles ?? []){ vehicle in
-                    VehicleCellView(vehicle: vehicle)
-                }
-            }
-            
         }
+        .navigationTitle("Results")
         .onAppear(){
             viewModel.executeSearch()
         }
