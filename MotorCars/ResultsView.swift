@@ -28,12 +28,12 @@ struct ResultsView: View {
                     ProgressView("Searching")
                 }
                 
-                if viewModel.vehicles != nil {
+                if let vehicles = viewModel.vehicles {
                     
                     // I've done this as a straight ForEach - which would be non-ideal if we have many results here.
                     // ... but also we would want paging and all sorts of other stuff going on if there were to be many many results...
                     
-                    ForEach(viewModel.vehicles ?? []){ vehicle in
+                    ForEach(vehicles){ vehicle in
                         VehicleCellView(vehicle: vehicle)
                     }
                 }
