@@ -29,6 +29,10 @@ struct ResultsView: View {
                 }
             }
             
+            
+        }
+        .onAppear(){
+            viewModel.executeSearch()
         }
     }
 }

@@ -12,6 +12,7 @@ extension ResultsView{
     @MainActor class ViewModel: ObservableObject{
         
         private let searchParameters: SearchParameters
+        private let baseURL = "https://mcuapi.mocklab.io/search"
         
         @Published var isSearching: Bool = true
         @Published var errorDescription: String?
@@ -19,10 +20,17 @@ extension ResultsView{
         
         init(_ searchParameters: SearchParameters){
             self.searchParameters = searchParameters
-            // Execute the search
-            
         }
         
+        func executeSearch() {
+            isSearching = true
+            AF.request(baseURL, method: .get, parameters: searchParameters).response{[weak self] response in
+                
+                self?.isSearching=false
+                debugPrint(response)
+                
+            }
+        }
         
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchParameters {
+struct SearchParameters: Encodable {
     var make: String
     var model: String
     var year: String
