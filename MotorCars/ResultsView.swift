@@ -25,17 +25,19 @@ struct ResultsView: View {
                     Text(searchParameters.year)
                 }
                 if viewModel.isSearching {
-                    Group{
-                        Text("Searching!")
-                    }
+                    ProgressView("Searching")
                 }
                 
                 if viewModel.vehicles != nil {
+                    
+                    // I've done this as a straight ForEach - which would be non-ideal if we have many results here.
+                    // ... but also we would want paging and all sorts of other stuff going on if there were to be many many results...
+                    
                     ForEach(viewModel.vehicles ?? []){ vehicle in
                         VehicleCellView(vehicle: vehicle)
                     }
                 }
-            }
+            }.padding()
         }
         .navigationTitle("Results")
         .onAppear(){
