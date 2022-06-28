@@ -8,22 +8,19 @@
 import SwiftUI
 
 struct ResultsView: View {
-    let searchParameters: SearchParameters
-    @ObservedObject private var viewModel: ViewModel
     
-    init(_ searchParameters: SearchParameters){
-        self.searchParameters = searchParameters
-        self.viewModel = ViewModel(searchParameters)
-    }
+    @StateObject var viewModel: ViewModel
     
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 12){
-                HStack{
-                    Text("Searching for: ")
-                    Text(searchParameters.make).bold()
-                    Text(searchParameters.model).bold()
-                    Text(searchParameters.year)
+                if let searchParameters = viewModel.searchParameters {
+                    HStack{
+                        Text("Searching for: ")
+                        Text(searchParameters.make).bold()
+                        Text(searchParameters.model).bold()
+                        Text(searchParameters.year)
+                    }
                 }
                 switch viewModel.state {
                 case .searching:
@@ -51,9 +48,39 @@ struct ResultsView: View {
 }
 
 struct ResultsView_Previews: PreviewProvider {
+    static let searchParams = SearchParameters(make: "Dacia", model: "Sandero", year: "2014")
+    
+    static var searchingViewModel: ResultsView.ViewModel {
+        let vm = ResultsView.ViewModel()
+        vm.state = .searching
+        return vm
+    }
+    
+    static var errorViewModel: ResultsView.ViewModel {
+        let vm = ResultsView.ViewModel()
+        vm.state = .error(FakeError.somethingNasty)
+        return vm
+    }
+    
+    static var successViewModel: ResultsView.ViewModel {
+        let vm = ResultsView.ViewModel()
+        let vehicles = [
+        Vehicle(id: "123", name: "Bikes are better", title: "LHT", make: "Surly", model: "Long Haul Trucker", year: "2014", price: "£689.00")
+        ]
+        vm.state = .success(vehicles)
+        return vm
+    }
+    
+    
     static var previews: some View {
-        let searchParams = SearchParameters(make: "Dacia", model: "Sandero", year: "2014")
-        ResultsView(searchParams)
+        Group{
+            ResultsView(viewModel: searchingViewModel)
+            ResultsView(viewModel: errorViewModel)
+            ResultsView(viewModel: successViewModel)
+        }
     }
 }
 
+enum FakeError: Error {
+    case somethingNasty
+}

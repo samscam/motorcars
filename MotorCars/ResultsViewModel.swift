@@ -17,18 +17,21 @@ extension ResultsView{
             case success([Vehicle])
         }
         
-        private let searchParameters: SearchParameters
+
         private let baseURL = "https://mcuapi.mocklab.io/search"
         
+        @Published var searchParameters: SearchParameters?
         @Published var state: ResultsViewState = .searching
         
-        init(_ searchParameters: SearchParameters){
-            self.searchParameters = searchParameters
-        }
+
         
         func executeSearch() {
-            state = .searching
+
+            guard let searchParameters = searchParameters else {
+                return
+            }
             
+            state = .searching
             AF.request(baseURL, method: .get, parameters: searchParameters).responseDecodable(of: VehicleResponse.self){ [weak self] response in
                 
                 // Logging out these responses

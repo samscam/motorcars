@@ -20,6 +20,7 @@
 		22C06FF22869CE9B006E5392 /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FF12869CE9B006E5392 /* ResultsViewModel.swift */; };
 		22C06FF42869DD7C006E5392 /* SearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FF32869DD7C006E5392 /* SearchParameters.swift */; };
 		22C06FF62869E549006E5392 /* VehicleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FF52869E549006E5392 /* VehicleCellView.swift */; };
+		22C06FF8286A617C006E5392 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C06FF7286A617C006E5392 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		22C06FF12869CE9B006E5392 /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
 		22C06FF32869DD7C006E5392 /* SearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParameters.swift; sourceTree = "<group>"; };
 		22C06FF52869E549006E5392 /* VehicleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleCellView.swift; sourceTree = "<group>"; };
+		22C06FF7286A617C006E5392 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				22C06FC028646B28006E5392 /* MotorCarsApp.swift */,
 				22C06FC228646B28006E5392 /* SearchView.swift */,
+				22C06FF7286A617C006E5392 /* SearchViewModel.swift */,
 				22C06FED2869C607006E5392 /* ResultsView.swift */,
 				22C06FF12869CE9B006E5392 /* ResultsViewModel.swift */,
 				22C06FF52869E549006E5392 /* VehicleCellView.swift */,
@@ -282,6 +285,7 @@
 			files = (
 				22C06FF02869CDF7006E5392 /* Vehicle.swift in Sources */,
 				22C06FF22869CE9B006E5392 /* ResultsViewModel.swift in Sources */,
+				22C06FF8286A617C006E5392 /* SearchViewModel.swift in Sources */,
 				22C06FC328646B28006E5392 /* SearchView.swift in Sources */,
 				22C06FF62869E549006E5392 /* VehicleCellView.swift in Sources */,
 				22C06FF42869DD7C006E5392 /* SearchParameters.swift in Sources */,

@@ -11,13 +11,9 @@ struct SearchView: View {
     
     @State private var isShowingResultsView: Bool = false
     
-    @State private var make: String = ""
-    @State private var model: String = ""
-    @State private var year: String = ""
+
+    @StateObject var viewModel = ViewModel()
     
-    var searchParameters: SearchParameters{
-        return SearchParameters(make: make, model: model, year: year)
-    }
     
     var body: some View {
         NavigationView{
@@ -25,18 +21,18 @@ struct SearchView: View {
             ScrollView{
 
                 VStack{
-                    TextField("Make", text: $make)
+                    TextField("Make", text: $viewModel.make)
                         .disableAutocorrection(true)
                         .padding()
                         .border(.primary)
-                    TextField("Model", text: $model)
+                    TextField("Model", text: $viewModel.model)
                         .disableAutocorrection(true)
                         .padding()
                         .border(.primary)
-                    TextField("Year", text: $year)
+                    TextField("Year", text: $viewModel.year)
                         .padding()
                         .border(.primary)
-                    NavigationLink(destination: ResultsView(searchParameters)) { Text("Search")
+                    NavigationLink(destination: ResultsView(viewModel: viewModel.resultsViewModel)) { Text("Search")
                     }
                         .buttonStyle(.borderedProminent)
                 }
