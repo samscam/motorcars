@@ -39,7 +39,7 @@ struct SearchView: View {
             }
                 .padding()
                 .navigationTitle("Find a car...")
-        }
+        }.navigationViewStyle(.stack)
 
     }
 }
